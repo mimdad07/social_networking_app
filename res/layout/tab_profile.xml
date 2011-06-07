@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+   	android:id="@+id/sc"
+   	android:layout_width="fill_parent"
+   	android:layout_height="wrap_content" 
+    android:scrollbarSize="5dip"
+   	android:scrollbars="vertical">
+
+	<LinearLayout 
+		android:id="@+id/settings"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:scrollbars="vertical"
+		android:focusable="true"
+		>
+		   
+	    <TextView 
+	    	android:text="Personal Information" 
+	    	android:layout_width="wrap_content" 
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginTop="20dip"
+	    	android:layout_marginLeft="80dip"
+	    	android:textColor="#ff00ff00"
+	    	android:textStyle="bold"
+	    	android:textSize="15dip"/>
+	    	
+	
+		<TableLayout 
+			android:layout_width="wrap_content" 
+			android:layout_height="match_parent"
+			android:layout_marginLeft="20dip"
+	>
+			
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Full Name" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+			    <EditText
+		        	android:id="@+id/fullname"
+			    	android:text="" 
+			    	android:layout_width="200dip" 
+			    	android:layout_height="wrap_content" />
+			    	
+		    </TableRow>
+		    
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView
+		        	android:text="Address" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+			    <EditText
+		        	android:id="@+id/address" 
+			    	android:text="" 
+			    	android:layout_width="200dip" 
+			    	android:layout_height="wrap_content" />
+			    	
+		    </TableRow>
+		    
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Country" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+		       
+		        <Spinner
+		        	android:id="@+id/spnr_set_country"
+		        	android:text="" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+		    </TableRow>
+		    
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Age" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+		       
+		        <Spinner 
+		        	android:id="@+id/spnr_set_age" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+		    </TableRow>
+		   
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Sex" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+		       
+		        <Spinner 
+		        	android:id="@+id/spnr_set_sex" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	  
+		    </TableRow>				
+	
+		
+		<TextView 
+	    	android:text="Additional Information" 
+	    	android:layout_width="wrap_content" 
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginTop="20dip"
+	    	android:layout_marginLeft="70dip"
+	    	android:textColor="#ff00ff00"
+	    	android:textStyle="bold"
+	    	android:textSize="15dip"/>
+	    	
+	
+	
+			
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Mob No." 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	 
+			    <EditText
+		        	android:id="@+id/mobileno" 
+			    	android:numeric="integer"
+			    	android:layout_width="200dip" 
+			    	android:layout_height="wrap_content" />
+			    	
+		    </TableRow>
+		    
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Hobby" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+			    <EditText
+		        	android:id="@+id/hobby" 
+			    	android:text=""
+			    	android:layout_width="200dip" 
+			    	android:layout_height="wrap_content" />
+			</TableRow>
+			    
+		    <TableRow 
+	    		android:layout_width="wrap_content" 
+	    		android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Religion" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+			    <EditText
+		        	android:id="@+id/religion"
+			    	android:text=""
+			    	android:layout_width="200dip" 
+			    	android:layout_height="wrap_content" />
+				    	
+		    </TableRow>
+		    
+		    <TableRow 
+		    	android:layout_width="wrap_content" 
+		    	android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Working Field" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+		       
+		        <Spinner 
+		        	android:id="@+id/spnr_set_workfld" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	  
+		    </TableRow>	
+		    
+		    <TableRow 
+	    		android:layout_width="wrap_content" 
+	    		android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="Image" 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+			    <Button
+			    	android:text="..."
+			    	android:layout_width="200dip" 
+			    	android:layout_height="wrap_content" />
+				    	
+		    </TableRow>	
+		    
+		    <TableRow 
+	    		android:layout_width="wrap_content" 
+	    		android:layout_height="match_parent">
+		        <TextView 
+		        	android:text="    " 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+			    <Button
+			    	android:id="@+id/savesetting"
+			    	android:text="Save"
+			    	android:layout_width="200dip" 
+			    	android:layout_height="wrap_content" />
+			    
+			    <TextView 
+		        	android:text="    " 
+		        	android:layout_width="wrap_content" 
+		        	android:layout_height="wrap_content" />
+			    	
+				    	
+		    </TableRow>	
+		</TableLayout>	    
+	</LinearLayout>
+</ScrollView> 

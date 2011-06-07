@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:orientation="vertical"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" 
+    	>
+    	<ViewFlipper 
+    		android:id="@+id/flipFirst"
+    		android:layout_height="fill_parent"
+    		android:layout_width="fill_parent" 
+    		>
+    		
+    		
+    		<LinearLayout 
+	    		android:orientation="vertical"
+	    		android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content" >
+	    		
+    			<ImageView 
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content" 
+    				android:src="@drawable/logo"  />
+    		
+    		</LinearLayout>
+    		
+    <!-- _________________________________ First ProgressBar_____________________________ --> 	
+    		
+    		<LinearLayout 
+    			android:orientation="vertical"
+    			android:layout_width="fill_parent"
+    			android:layout_height="fill_parent" >
+    			
+    			<ProgressBar 
+   					android:id="@+id/start_progressbar"
+					style="?android:attr/progressBarStyleHorizontal"
+					android:layout_width="220dip"
+					android:layout_marginLeft="50dip"
+					android:layout_marginTop="200dip"
+					android:layout_height="wrap_content"
+					android:max="100"
+					android:progress="50" />
+					
+					<TextView 
+		    			android:text="Please Wait..." 
+		    			android:layout_width="wrap_content" 
+		    			android:layout_height="wrap_content"
+		    			android:textColor="#ffffff00"
+		    			android:layout_marginTop="10dip"
+		    			android:layout_marginLeft="100dip"
+		    			android:gravity="center_horizontal"/>
+					
+					
+		</LinearLayout>	
+		
+		
+		<!-- _______________________________ Login Page __________________________ -->
+		
+		<LinearLayout 
+    		android:orientation="vertical"
+    		android:layout_width="fill_parent"
+    		android:layout_height="fill_parent" 
+    		
+    		>
+    		
+    		
+    		
+    		<TextView 
+    			android:text="Please Login..." 
+    			android:layout_width="wrap_content" 
+    			android:layout_height="wrap_content"
+    			android:textSize="22dip"
+    			android:textStyle="bold"
+    			android:textColor="#ff00ff00"
+    			android:layout_marginTop="80dip"
+    			android:layout_marginLeft="100dip"
+    			android:layout_marginBottom="10dip"
+    			android:gravity="center_horizontal">
+    		</TextView>
+    		
+    		<TableLayout 
+    			android:layout_height="wrap_content" 
+    			android:layout_width="match_parent" 
+    			android:id="@+id/tableLayout1">
+    			
+    			<TableRow 
+    				android:id="@+id/tableRow1" 
+    				android:layout_width="wrap_content" 
+    				android:layout_height="wrap_content">
+    				<TextView 
+    					android:id="@+id/textView1" 
+    					android:text="User Name" 
+    					
+    					android:layout_height="wrap_content" 
+    					android:layout_width="wrap_content"
+    					android:textSize="18dip"
+    					android:typeface="serif"
+    					android:textStyle="italic"
+    					android:layout_marginLeft="10dip"
+    					>
+    				</TextView>
+    				
+    				<EditText 
+    					android:id="@+id/txtUserName" 
+    					android:text=""
+    					android:hint="user name" 
+    					android:layout_height="wrap_content" 
+    					android:layout_width="180dip"
+    					>
+    				</EditText>
+    				
+    			</TableRow>
+    			
+    			<TableRow 
+    				android:id="@+id/tableRow2" 
+    				android:layout_width="wrap_content" 
+    				android:layout_height="wrap_content">
+    				<TextView 
+    					android:text="Password" 
+    					android:layout_height="wrap_content" 
+    					android:layout_width="wrap_content"
+    					android:textSize="18dip"
+    					android:typeface="serif"
+    					android:textStyle="italic"
+    					android:layout_marginLeft="10dip"
+    					>
+    				</TextView>
+    				
+    				<EditText 
+    					android:id="@+id/txtPassword" 
+    					android:text=""
+    					android:hint="password" 
+    					android:password="true"
+    					android:layout_height="wrap_content" 
+    					android:layout_width="180dip"
+    					>
+    				</EditText>
+    				
+    			</TableRow>
+    			
+    			<TableRow 
+    				android:layout_width="wrap_content" 
+    				android:layout_height="wrap_content">
+    				<TextView 
+    					android:text="" 
+    					android:layout_height="wrap_content" 
+    					android:layout_width="wrap_content"
+    					android:textSize="18dip"
+    					android:typeface="serif"
+    					android:textStyle="italic"
+    					android:layout_marginLeft="10dip"
+    					>
+    				</TextView>
+    				
+    				<Button 
+				    	android:id="@+id/login" 
+				    	android:text="Login" 
+				    	android:layout_marginRight="80dip"
+				    	android:layout_height="wrap_content"
+				    	android:layout_marginTop="10dip"
+				    	>
+				    </Button>
+    				
+    			</TableRow>
+    			
+    </TableLayout>
+   
+    		
+    <CheckBox 
+    	android:id="@+id/autoLogin" 
+    	android:text="Remember next time" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:typeface="serif"
+    	android:textStyle="italic"
+    	android:checked="false"
+    	android:layout_marginLeft="10dip"
+    	
+    	>
+    </CheckBox>
+    
+   	<TextView
+   		android:id="@+id/createanewaccount" 
+   		android:textColor="@color/colors"
+   		android:text="Create a new Account" 
+   		android:layout_width="wrap_content" 
+   		android:layout_height="wrap_content"
+   		android:typeface="serif"
+    	android:textStyle="italic"
+   		android:layout_marginLeft="10dip"
+   		android:layout_marginTop="8dp"
+   		>
+   	</TextView>
+    		
+   	<TextView 
+   		android:id="@+id/forgateusername" 
+   		android:textColor="@color/colors"
+   		android:text="Forgate username or password" 
+   		android:layout_width="wrap_content" 
+   		android:layout_height="wrap_content"
+   		android:typeface="serif"
+    	android:textStyle="italic"
+   		android:layout_marginLeft="10dip"
+   		android:layout_marginTop="10dp"
+   		>
+   	</TextView>
+   	
+   	
+    		
+    </LinearLayout>
+    
+    
+   
+    	
+   	
+	
+	 <!-- ______________________________ Signup Layout __________________________  -->
+    
+	<LinearLayout 
+		android:id="@+id/settings"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:scrollbars="vertical"
+		android:focusable="true"
+		>
+		
+		<TextView 
+			android:text="Account Information" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="18dip"
+			android:textStyle="bold"
+			android:textColor="#ff00ff00"
+			android:layout_marginTop="80dip"
+			android:layout_marginLeft="65dip"
+			android:layout_marginBottom="10dip"
+			android:gravity="center_horizontal">
+	   	</TextView>
+	
+		<TableLayout 
+	    			android:layout_height="wrap_content" 
+	    			android:layout_width="match_parent" >
+	    			
+	    			<TableRow 
+	    				android:layout_width="wrap_content" 
+	    				android:layout_height="wrap_content">
+	    				<TextView 
+	    					android:id="@+id/textView1" 
+	    					android:text="User Name" 
+	    					
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="wrap_content"
+	    					android:textSize="18dip"
+	    					android:typeface="serif"
+	    					android:textStyle="italic"
+	    					android:layout_marginLeft="10dip"
+	    					>
+	    				</TextView>
+	    				
+	    				<EditText 
+	    					android:id="@+id/signup_username" 
+	    					android:text=""
+	    					android:hint="user name" 
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="180dip"
+	    					>
+	    				</EditText>
+	    				
+	    			</TableRow>
+	    			
+	    			<TableRow 
+	    				android:layout_width="wrap_content" 
+	    				android:layout_height="wrap_content">
+	    				<TextView 
+	    					android:text="Password" 
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="wrap_content"
+	    					android:textSize="18dip"
+	    					android:typeface="serif"
+	    					android:textStyle="italic"
+	    					android:layout_marginLeft="10dip"
+	    					>
+	    				</TextView>
+	    				
+	    				<EditText 
+	    					android:id="@+id/signup_password" 
+	    					android:text=""
+	    					android:hint="password" 
+	    					android:password="true"
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="180dip"
+	    					>
+	    				</EditText>
+	    				
+	    			</TableRow>
+	    			
+	    			<TableRow 
+	    				android:layout_width="wrap_content" 
+	    				android:layout_height="wrap_content">
+	    				<TextView 
+	    					android:text="Re-password" 
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="wrap_content"
+	    					android:textSize="18dip"
+	    					android:typeface="serif"
+	    					android:textStyle="italic"
+	    					android:layout_marginLeft="10dip"
+	    					>
+	    				</TextView>
+	    				
+	    				<EditText 
+	    					android:id="@+id/signup_repassword" 
+	    					android:text=""
+	    					android:hint="re-password" 
+	    					android:password="true"
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="180dip"
+	    					>
+	    				</EditText>
+	    				
+	    			</TableRow>
+	    			
+	    			<TableRow 
+	    				android:layout_width="wrap_content" 
+	    				android:layout_height="wrap_content">
+	    				<TextView 
+	    					android:text="Email" 
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="wrap_content"
+	    					android:textSize="18dip"
+	    					android:typeface="serif"
+	    					android:textStyle="italic"
+	    					android:layout_marginLeft="10dip"
+	    					>
+	    				</TextView>
+	    				
+	    				<EditText 
+	    					android:id="@+id/signup_email" 
+	    					android:text=""
+	    					android:layout_height="wrap_content" 
+	    					android:layout_width="180dip"
+	    					android:textStyle="italic"
+    						android:inputType="textEmailAddress"
+	    					>
+	    				</EditText>
+	    				
+	    			</TableRow>
+	    			
+	    </TableLayout>
+	    
+	    <Button 
+	    	android:id="@+id/signupinfo" 
+	    	android:text="Signup" 
+	    	android:layout_width="120dip"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginLeft="80dip"
+	    	android:layout_marginTop="10dip"
+	    	>
+	    </Button>
+	</LinearLayout>		
+	
+	
+	<!-- _________________________________ Second ProgressBar_____________________________ --> 	
+	<LinearLayout 
+  			android:orientation="vertical"
+  			android:layout_width="fill_parent"
+  			android:layout_height="fill_parent" >
+  			
+  			<ProgressBar 
+ 				android:id="@+id/start_progressbar1"
+				style="?android:attr/progressBarStyleHorizontal"
+				android:layout_width="220dip"
+				android:layout_marginLeft="50dip"
+				android:layout_marginTop="200dip"
+				android:layout_height="wrap_content"
+				android:max="100"
+				android:progress="98" />
+				
+				<TextView 
+		    			android:text="Loading..." 
+		    			android:layout_width="wrap_content" 
+		    			android:layout_height="wrap_content"
+		    			android:textColor="#ffffff00"
+		    			android:layout_marginTop="10dip"
+		    			android:layout_marginLeft="100dip"
+		    			android:gravity="center_horizontal"/>
+	</LinearLayout>
+		
+	   <!-- _________________________________ Welcome Layout _____________________________ --> 	
+	
+		
+	<LinearLayout 
+  			android:layout_width="fill_parent"
+  			android:layout_height="fill_parent" >
+  			
+  			<Button 
+		   		android:id="@+id/welcome" 
+		   		android:background="#000000"
+		   		android:textColor="@color/colors"
+		   		android:text="Welcome" 
+		   		android:layout_width="fill_parent"
+		   		android:layout_height="fill_parent"
+		   		android:typeface="serif"
+		    	android:textStyle="italic" />
+  			
+		
+	</LinearLayout>	
+	
+	
+	
+	
+	
+    </ViewFlipper>
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Alap!</string>
+    <string name="app_name">Alap</string>
+    <string name ="about">Alap \n version 1.2 \n Update date : 01/02/2012</string>
+    
+</resources>

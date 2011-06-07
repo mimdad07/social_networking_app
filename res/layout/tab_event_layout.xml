@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" >
+  
+    <Button 
+    	android:id="@+id/btn_event_friendlist" 
+    	android:text="My Friends" 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="match_parent" 
+    	android:layout_marginTop="10dp"
+    	android:layout_marginLeft="25dp"
+    	android:layout_marginRight="25dp"/>
+    <Button 
+    	android:id="@+id/btn_event_requestingfriendlist" 
+    	android:text="My Request" 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="match_parent"
+		android:layout_marginLeft="25dp"
+    	android:layout_marginRight="25dp"/>
+    	
+    <Button 
+    	android:id="@+id/btn_event_pendingfriendlist" 
+    	android:text="Pending Request" 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="match_parent"
+		android:layout_marginLeft="25dp"
+    	android:layout_marginRight="25dp"/>
+       
+    <Button 
+    	android:id="@+id/btn_event_notification" 
+    	android:text="Notifications" 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="match_parent" 
+    	android:layout_marginLeft="25dp"
+    	android:layout_marginRight="25dp"/>
+    
+    <Button 
+    	android:id="@+id/btn_event_back" 
+    	android:text="Back" 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="match_parent"
+    	android:visibility="invisible"
+    	android:layout_marginLeft="25dp"
+    	android:layout_marginRight="25dp"/>
+    	 
+   	   
+</LinearLayout>

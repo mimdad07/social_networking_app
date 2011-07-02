@@ -1,9 +1,12 @@
 package created.by.imdad.alapdemo;
  
 
+import java.io.IOException;
+
 import created.by.imdad.alapdemo.tab.Tab;
 
 import android.app.Activity; 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,10 +24,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class Alap extends Activity implements OnClickListener, OnTouchListener
-{	 
+{	
+	private Methods functions; 
 	private int progress=0, run=0, range =100000,last = 32768, which=1;
 	ProgressBar progressBar, progressBar1; 
 
@@ -48,7 +53,12 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 	{	
 		super.onCreate(savedInstanceState);
 		setFullScreen();	 
-		setContentView( R.layout.firstlayout ); 
+		setContentView( R.layout.firstlayout );
+		
+		functions = new Methods();
+		
+		preference = getSharedPreferences(PREF_FILENAME, Context.MODE_WORLD_WRITEABLE);
+		
 		progressBar = (ProgressBar) findViewById( R.id.start_progressbar );
 		progressBar1 = (ProgressBar) findViewById( R.id.start_progressbar1 );
 		
@@ -70,8 +80,21 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 		
 		EditText username = (EditText)findViewById( R.id.txtUserName);
 		EditText password = (EditText)findViewById( R.id.txtPassword);
-		 
+		
+		String user = preference.getString("username","0" );
+        String pass = preference.getString("password", "0");
+        String check = preference.getString("checked", "no");
+        
+        if( check.equals("yes"))
+        {
+                username.setText(user);
+                password.setText(pass);
+        }
+        
+       // showLogo();
+		
 		renderProgressBar(progressBar  );
+		
 		 
 	}
 	
@@ -184,11 +207,68 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 			EditText username = (EditText)findViewById( R.id.txtUserName);
 			EditText password = (EditText)findViewById( R.id.txtPassword);
 			CheckBox checkBox = (CheckBox) findViewById(R.id.autoLogin);
-			 
+			
+			String data[][] = new String[2][2];
+			
+			data[0][0] = "user_name";			data[0][1] = username.getText().toString().trim();
+			data[1][0] = "user_password";		data[1][1] = password.getText().toString().trim();
+			
+			try {
+				if( functions.verifyLogin( data ))
+				{
+					Toast.makeText(getApplicationContext(), "Login Successfull", Toast.LENGTH_SHORT ).show();
+	
+					//put my ip in the server user_ip field.
+					//functions.makeRequest(myIpPage, data);
+					 
+					progress=20;
+					run=100;
+					last=0;
+					
+					which=2;
+					renderProgressBar(progressBar1 );
+					
+					final String d[][]= new String[2][2];
+					d[0][0] = "username";	d[0][1] = username.getText().toString().trim();
+					d[1][0] = "password";	d[1][1] = password.getText().toString().trim();
+					
+					if( checkBox.isChecked())
+					{
+						SharedPreferences.Editor edt = preference.edit();
+						edt.putString("checked", "yes" );
+						edt.putString("username", username.getText().toString().trim());
+						edt.putString("password", password.getText().toString().trim());
+						
+						edt.commit();
+					}
+					else
+					{
+						SharedPreferences.Editor edt = preference.edit();
+						edt.putString("checked", "no" );
+						edt.putString("username", username.getText().toString().trim());
+						edt.putString("password", password.getText().toString().trim());
+						edt.commit();
+						
+					}
+
+					vf.setOutAnimation( AnimationUtils.loadAnimation( getApplicationContext(), R.anim.right_out));
+					vf.showNext();
+					vf.setInAnimation(AnimationUtils.loadAnimation( getApplicationContext(), R.anim.left_in ));
+					vf.showNext();
+					
+					//initiat the tab list if login successful
+					Intent intent = new Intent( this, Tab.class );
+					startActivity( intent );
+				}
+				else
+					Toast.makeText(getApplicationContext(), "Login Unsuccessfull", Toast.LENGTH_SHORT ).show();
+					
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+		
+			} 
 		}
-		
-		
-		
 		
 		if( view == findViewById( R.id.signupinfo ))
 		{
@@ -221,8 +301,7 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 			startActivity( intent );
 		}
 		
-	}
-	
+	} 
 	
 	 public void setFullScreen()
 	 {

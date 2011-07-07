@@ -291,7 +291,44 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 			String data[][] = new String[2][2];			
 			data[0][0] = "user_name";			data[0][1] = username.getText().toString().trim();
 			data[1][0] = "user_password";		data[1][1] = password.getText().toString().trim();
-			 
+			
+			
+			try {
+				if( functions.makeSignup(  username.getText().toString().trim(), 
+										   password.getText().toString().trim(), 
+										   repassword.getText().toString().trim(),
+										   email.getText().toString().trim()))
+				{
+					Toast.makeText(getApplicationContext(), "Signup Successfull", Toast.LENGTH_SHORT ).show();
+				
+					//Save username and password
+					SharedPreferences.Editor edt = preference.edit();
+					edt.putString("checked", "no" );
+					edt.putString("username", username.getText().toString().trim());
+					edt.putString("password", password.getText().toString().trim());
+					edt.commit();
+					
+					//call this function to store ip address.
+					//functions.makeRequest(myIpPage, data);
+					
+					progress=20;
+					run=100;
+					last=0;
+					
+					renderProgressBar(progressBar1);
+					vf.showNext(); 
+					vf.showNext();
+					
+					Intent intent = new Intent( this, Tab.class );
+					startActivity( intent );
+					
+				}
+				else
+					Toast.makeText(getApplicationContext(), "Signup Unsuccessfull", Toast.LENGTH_SHORT ).show();
+					
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//---------latter i will delete this

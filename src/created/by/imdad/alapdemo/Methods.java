@@ -15,19 +15,24 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.SharedPreferences;
 public class Methods extends Activity
 {
 	public static final String PREF_FILENAME = "AlapPreference";  
 	
-	private String  host = "http://10.0.2.2/android/",    
+	private String  host =  "http://10.0.2.2/android/",  //  "http://imdad.coolpage.biz/alap/", //  
 					
 					usernamePage = "username.php",
-					veriryLoginPage = "verify_login.php", 
+					veriryLoginPage = "verify_login.php",
 					signupPage = "signup.php",
 
-					url =null ;
+					url =null, 
+				    result;
 				  
 	    
 	InputStream inputStream;
@@ -70,7 +75,42 @@ public class Methods extends Activity
 		
 		return inputStream;
 	}
-	  
+	 
+	public List<String> queryAllInformation( InputStream is )
+	{
+
+		List< String> listAllInformation = new ArrayList< String >();;
+		try
+		{
+	        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"),8);	
+
+	        result = reader.readLine();	
+	        is.close();	
+		}
+		catch(Exception e){}
+
+		try
+		{	
+			
+	        JSONArray jArray = new JSONArray(result);
+
+	        JSONObject json_data = jArray.getJSONObject(1);
+
+            listAllInformation.add( json_data.getString( "user_fullname") );
+            listAllInformation.add( json_data.getString( "user_address") );
+            listAllInformation.add( json_data.getString( "user_country") );
+            listAllInformation.add( json_data.getString( "user_age") );
+            listAllInformation.add( json_data.getString( "user_sex") );
+            listAllInformation.add( json_data.getString( "user_mobileno") );
+            listAllInformation.add( json_data.getString( "user_hobby") );
+            listAllInformation.add( json_data.getString( "user_religion") );
+            listAllInformation.add( json_data.getString( "user_workingfield") );
+                       
+       }
+		catch(JSONException e){}
+		
+		return  listAllInformation;
+	}
 	
 	//Email validation ( simplified form )
 		public boolean emailValidation( String eml)

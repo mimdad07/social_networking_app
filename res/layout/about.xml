@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/chat_parent_layout"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical" >
+	
+	<TextView
+		android:id="@+id/menu_about_string"
+		android:text="@string/about"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"		
+		
+	/>
+		
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignBaseline="@id/chat_parent_layout"
+		>
+		
+		<Button
+			android:id="@+id/btn_about_ok"
+			android:text="Ok"
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent"
+			android:layout_gravity="center"
+			android:minWidth="55dp"
+			android:background="@android:drawable/btn_default_small"/>
+			
+			</LinearLayout>
+	</RelativeLayout>
+
+

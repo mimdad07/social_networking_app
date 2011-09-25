@@ -32,7 +32,8 @@ public class Methods extends Activity
 					signupPage = "signup.php",
 
 					url =null, 
-				    result;
+				    result, 
+				    value[];
 				  
 	    
 	InputStream inputStream;
@@ -75,6 +76,47 @@ public class Methods extends Activity
 		
 		return inputStream;
 	}
+	
+	// This method is used in Search Tab. 
+		public List<String[]> getIdAndFullName( InputStream is )
+		{
+			try
+			{
+		        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"),8);	
+		        StringBuilder sb = new StringBuilder();
+		        String line = null;
+		
+		        while ((line = reader.readLine()) != null)
+		        {
+		        	sb.append(line + "\n");
+		        }	
+		        inputStream.close();
+		
+		        result=sb.toString();	
+			}
+			catch(Exception e){}
+
+			try
+			{	
+				query = new ArrayList< String[]>();
+		        JSONArray jArray = new JSONArray(result);
+		        int count =jArray.length();
+		    
+	            for(int i=1;i<=jArray.length();i++)
+		        {
+	                JSONObject json_data = jArray.getJSONObject(i);
+	                value = new String[2];
+	                value[0] = json_data.getString( "user_id");
+	                value[1] = json_data.getString( "user_fullname" );
+	                
+	                query.add(value);              
+		        }		        	        	
+			}
+			catch(JSONException e){}
+			
+			return  query;
+		}
+		
 	 
 	public List<String> queryAllInformation( InputStream is )
 	{

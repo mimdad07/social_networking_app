@@ -1,21 +1,26 @@
 package created.by.imdad.alapdemo;
- 
 
 import java.io.IOException;
 
 import created.by.imdad.alapdemo.tab.Tab;
 
-import android.app.Activity; 
-import android.content.Context;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;  
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.LayoutInflater;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
@@ -29,7 +34,7 @@ import android.widget.ViewFlipper;
 
 public class Alap extends Activity implements OnClickListener, OnTouchListener
 {	
-	private Methods functions; 
+	private Methods functions;
 	private int progress=0, run=0, range =100000,last = 32768, which=1;
 	ProgressBar progressBar, progressBar1; 
 
@@ -52,7 +57,8 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 	protected void onCreate(Bundle savedInstanceState) 
 	{	
 		super.onCreate(savedInstanceState);
-		setFullScreen();	 
+		setFullScreen();	
+		showInternetSettingDialog();
 		setContentView( R.layout.firstlayout );
 		
 		functions = new Methods();
@@ -95,7 +101,7 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 		
 		renderProgressBar(progressBar  );
 		
-		 
+		
 	}
 	
 	@Override
@@ -104,7 +110,15 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 		super.onPause();
 		finish();
 	}
- 
+
+	public void showLogo()
+	{
+		ViewFlipper vf = (ViewFlipper) findViewById( R.id.flipFirst);
+		vf.setInAnimation(AnimationUtils.loadAnimation( getApplicationContext(), R.anim.logo_in ));
+		
+
+		//vf.showNext();
+	}
 	public void renderProgressBar(ProgressBar p )
     {
 		final ProgressBar progressBar=p;
@@ -183,15 +197,56 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 	{
 		if( action.getAction()== MotionEvent.ACTION_UP ) //avoiding down listener
 		{
-			if( view == findViewById( R.id.createanewaccount ))
+		if( view == findViewById( R.id.createanewaccount ))
+		{
+			ViewFlipper vf = (ViewFlipper) findViewById( R.id.flipFirst);
+			vf.setInAnimation( AnimationUtils.loadAnimation(getApplicationContext(), R.anim.in_popup));
+			vf.setOutAnimation( AnimationUtils.loadAnimation(getApplicationContext(), R.anim.out_popup));
+			
+			vf.showNext();
+		}
+		
+		
+		if( view == findViewById( R.id.forgateusername ))
+		{
+			
+			final String data[][] = new String[1][2];
+			
+			Context mContext = getApplicationContext();
+			AlertDialog.Builder forgateuser = new AlertDialog.Builder( this );
+			
+			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+			View layout = inflater.inflate(R.layout.send_username_and_password_dialog_layout,
+			                               (ViewGroup) findViewById(R.id.layout_root));
+
+			final EditText sendMail = (EditText)findViewById( R.id.send_username_text);
+		    data[0][0] = "user_email";
+		    //data[0][1] = sendMail.getText().toString().trim();
+			
+			forgateuser.setPositiveButton( "Yes", new DialogInterface.OnClickListener() 
 			{
-				ViewFlipper vf = (ViewFlipper) findViewById( R.id.flipFirst);
-				vf.setInAnimation( AnimationUtils.loadAnimation(getApplicationContext(), R.anim.in_popup));
-				vf.setOutAnimation( AnimationUtils.loadAnimation(getApplicationContext(), R.anim.out_popup));
-				
-				vf.showNext();
-			}
-			 
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) 
+				{
+				    		data[0][1] = sendMail.getText().toString().trim();
+							functions.makeRequest( sendUsernameAndPassword, data);
+				   
+				}
+			});
+			
+			forgateuser.setNegativeButton( "No", new DialogInterface.OnClickListener() 
+			{
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) 
+				{
+					//Toast.makeText(getApplicationContext(), "No button Clicked", Toast.LENGTH_SHORT).show();
+				}
+			});
+			
+			forgateuser.setView(layout);
+			
+			forgateuser.show();
+		}
 		}
 		
 		return false;
@@ -267,8 +322,13 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 			catch (IOException e) {
 				e.printStackTrace();
 		
-			} 
+			}
+			
+			
 		}
+		
+		
+		
 		
 		if( view == findViewById( R.id.signupinfo ))
 		{
@@ -338,12 +398,56 @@ public class Alap extends Activity implements OnClickListener, OnTouchListener
 			startActivity( intent );
 		}
 		
-	} 
+	}
+	
 	
 	 public void setFullScreen()
 	 {
 	    	this.getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
 	        this.requestWindowFeature(Window.FEATURE_NO_TITLE);  
 	    	
-	 } 
+	 }
+	 
+		public void showInternetSettingDialog()
+		{
+			if( !isInternetOn())
+			{
+				//internet connection does not exist.
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setTitle( "Internet Connection does not exist")
+					   .setMessage("Do you want to bring up connectivity settings")
+				       .setCancelable(false)
+				       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				           @Override
+						public void onClick(DialogInterface dialog, int id) {
+				                Intent con_intent = new Intent( android.provider.Settings.ACTION_AIRPLANE_MODE_SETTINGS);
+				                startActivity(con_intent);
+				           }
+				       })
+				       .setNegativeButton("No", new DialogInterface.OnClickListener() {
+				           @Override
+						public void onClick(DialogInterface dialog, int id) {
+				        	   finish();
+				                dialog.cancel();
+				           }
+				       });
+				AlertDialog alert = builder.create();
+				alert.show();
+			}
+
+		}
+		public  boolean isInternetOn() 
+	    {
+			ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
+	        if (networkInfo != null && networkInfo.isConnected()) 
+	        {
+	            return true;
+	        }
+	        return false;
+
+	    }
+
+		
 }

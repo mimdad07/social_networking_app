@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"   >
+		
+   		<ImageView 
+   			android:id="@+id/img_view_info_dialog" 
+   			android:layout_height="wrap_content"  
+   			android:layout_width="wrap_content"
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="10dp" />
+   			
+   			
+   		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" 
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="10dp" >
+			
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="5dp"
+				android:layout_marginRight="10dp"
+				android:background="#ff32ff32"/>
+				
+			<LinearLayout 
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal" 
+				android:layout_marginTop="10dp"
+				android:weightSum="100" >
+				
+				<LinearLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical" 
+					android:weightSum="35" >
+			
+		   			<TextView 
+		   				android:text="Full Name :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" />
+		   				
+		   			<TextView 
+		   				android:text="Address :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" />
+		 	
+		   			<TextView 
+		   				android:text="Country :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" />
+		   				
+		   			<TextView 
+		   				android:text="Age :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium"/>
+		   				
+		   			<TextView 
+		   				android:text="Sex :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium"/>
+		   				
+		   			<TextView 
+		   				android:text="Mobile No :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" />
+		   				
+	 	   			<TextView 
+		   				android:text="Hobby :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" />
+		   				
+		   			<TextView 
+		   				android:text="Religion :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" />
+		   				
+		   			<TextView 
+		   				android:text="Work Field :" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+		   				
+				</LinearLayout>
+				
+					
+				<LinearLayout 
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical" 
+					android:layout_marginLeft="15dp"
+					android:weightSum="70" >	   				
+		   				
+		   			<TextView 
+		   				android:id="@+id/txtFullName_view_info_dialog" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:text="Imdad Sarkar" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+	
+		   			<TextView 
+		   				android:id="@+id/txtAddress_view_info_dialog" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+	
+		   			<TextView 
+		   				android:id="@+id/txtCountry_view_info_dialog" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+		
+		   			<TextView 
+		   				android:id="@+id/txtAge_view_info_dialog" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+			
+		   				
+		   			<TextView 
+		   				android:id="@+id/txtSex_view_info_dialog"
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+		   				
+		   			<TextView 
+		   				android:id="@+id/txtMobileno_view_info_dialog"
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+		   				
+		   			<TextView 
+		   				android:id="@+id/txtHobby_view_info_dialog" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+		   				
+		   			<TextView 
+		   				android:id="@+id/txtReligion_view_info_dialog" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" />
+		   			
+		   			<TextView 
+		   				android:id="@+id/txtWorkField_view_info_dialog" 
+		   				android:layout_height="wrap_content" 
+		   				android:layout_width="wrap_content" 
+		   				android:textAppearance="?android:attr/textAppearanceMedium" 
+		   				/>
+	   				
+   				</LinearLayout>
+ 				
+			</LinearLayout>
+		</LinearLayout>
+		
+   		<Button 
+   			android:id="@+id/btnOk_view_info_dialog" 
+   			android:text="Ok" 
+   			android:layout_width="fill_parent" 
+   			android:layout_height="fill_parent"
+   			android:layout_marginLeft="50dp" 
+   			android:layout_marginRight="50dp"/>
+		
+		
+</LinearLayout>

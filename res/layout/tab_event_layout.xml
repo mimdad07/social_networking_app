@@ -28,7 +28,7 @@
     	android:layout_width="match_parent"
 		android:layout_marginLeft="25dp"
     	android:layout_marginRight="25dp"/>
-       
+    
     <Button 
     	android:id="@+id/btn_event_notification" 
     	android:text="Notifications" 
@@ -45,6 +45,12 @@
     	android:visibility="invisible"
     	android:layout_marginLeft="25dp"
     	android:layout_marginRight="25dp"/>
-    	 
+    	
+   	<ListView 
+	   	android:id="@+id/event_tab_list" 
+	   	android:layout_height="wrap_content" 
+	   	android:layout_width="match_parent"
+	   	android:layout_marginLeft="25dp"
+    	android:layout_marginRight="25dp" />
    	   
 </LinearLayout>

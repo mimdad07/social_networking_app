@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -153,6 +155,45 @@ public class Methods extends Activity
 		
 		return  listAllInformation;
 	}
+	
+	public ArrayList< String > getNotifications( InputStream is )
+	{
+		String data = null;
+		ArrayList< String> notificationList = new ArrayList< String>();
+		try
+		{
+	        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"),8);	
+	        StringBuilder sb = new StringBuilder();
+	        String line = null;
+	
+	        while ((line = reader.readLine()) != null)
+	        {
+	        	sb.append(line + "\n");
+	        }	
+	        is.close();
+	
+	        result=sb.toString();
+			
+		}
+		catch(Exception e){}
+
+		try
+		{	
+	        JSONArray jArray = new JSONArray(result);	        
+            JSONObject json_data = jArray.getJSONObject(0);         
+            data = json_data.getString( "user_notification");
+            
+            StringTokenizer token = new StringTokenizer( data, "-786-" );
+    		while( token.hasMoreTokens())
+    		{
+    			notificationList.add(token.nextToken());
+    		}	        	        	
+		}
+		catch(JSONException e){}
+		
+		return  notificationList;
+	}
+	
 	
 	//Email validation ( simplified form )
 		public boolean emailValidation( String eml)

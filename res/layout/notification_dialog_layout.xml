@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"  >
+	
+	<ListView
+		android:id="@+id/notification_list"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"		
+	/>
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignBaseline="@id/notification_list"
+		android:weightSum="100"
+		>
+		<Button
+			android:id="@+id/btn_notification_ok"
+			android:text="Ok"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@android:drawable/btn_default_small"
+			android:layout_weight="50"/>
+		<Button
+			android:id="@+id/btn_notification_back"
+			android:text="Back"
+			android:layout_height="wrap_content" 
+			android:layout_width="wrap_content" 
+			android:background="@android:drawable/btn_default_small"
+			android:layout_weight="50"/>
+			
+			</LinearLayout>
+	</RelativeLayout>
+

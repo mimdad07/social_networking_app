@@ -16,13 +16,15 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> 
+        </activity>
         
         <activity android:name=".tab.Tab"/>
         <activity android:name=".tab.TabList"/>
         <activity android:name=".tab.TabSearch"/>
         <activity android:name=".tab.TabEvent"/>
         <activity android:name=".tab.TabProfile"/>
-  
+ 
+ 
+        <service android:name=".PullChat"></service>
     </application>
 </manifest>  

@@ -1,12 +1,18 @@
 package created.by.imdad.alapdemo;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class ParentActivity extends Activity 
 {
@@ -15,15 +21,44 @@ public class ParentActivity extends Activity
 	SharedPreferences preference;
 	Context context = null;
 	String logoutPage = "set_logout_status.php";
- 
+
+	private PendingIntent ServiceIntent;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		 
+		
+		Intent intent = new Intent( ParentActivity.this, PullChat.class);	
+		ServiceIntent = PendingIntent.getService(ParentActivity.this, 0, intent, 0);
+		
+		long time = SystemClock.elapsedRealtime();
+		AlarmManager am = (AlarmManager) getSystemService( ALARM_SERVICE );
+		am.setRepeating(AlarmManager.ELAPSED_REALTIME, time, 20000, ServiceIntent);
+		
+		functions = new Methods();
+		try {
+			context = createPackageContext("created.by.imdad.alapdemo", 0);
+		} catch (NameNotFoundException e) {}
+		preference = context.getSharedPreferences(PREF_FILENAME, Context.MODE_WORLD_WRITEABLE);
+		
 	}
 
-	 
+	
+	@Override
+	protected void onDestroy() 
+	{
+		super.onDestroy();
+		
+		AlarmManager am = (AlarmManager) getSystemService( ALARM_SERVICE );
+		am.cancel(ServiceIntent);
+		logout();
+		Toast.makeText(ParentActivity.this, "Stoped", Toast.LENGTH_SHORT );
+		
+	}
+
+
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);

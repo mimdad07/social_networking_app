@@ -14,7 +14,8 @@ public class Tab extends TabActivity
     @Override
 	protected void onCreate(Bundle savedInstanceState) 
     {
-        super.onCreate(savedInstanceState); 
+        super.onCreate(savedInstanceState);
+    	setFullScreen();
         TabHost tabHost = getTabHost();
          
         LayoutInflater.from(this).inflate(R.layout.tabs, tabHost.getTabContentView(), true);
@@ -36,6 +37,11 @@ public class Tab extends TabActivity
                 .setContent(new Intent( this, TabProfile.class ) ));
     }
     
-    
+    public void setFullScreen()
+    {
+    	this.getWindow().setFlags( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);  
+    	
+    }
 }
 

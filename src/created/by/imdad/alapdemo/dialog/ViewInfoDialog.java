@@ -20,7 +20,7 @@ public class ViewInfoDialog extends ParentDialog
 					 txt_age,
 					 txt_sex,
 					 txt_mobileno,
-					 txt_hobby, 
+					 txt_hobby,
 					 txt_religion,
 					 txt_work; 
 

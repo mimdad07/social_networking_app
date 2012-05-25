@@ -3,11 +3,13 @@
     android:id="@+id/search_scrvw"
    	android:layout_width="fill_parent"
    	android:layout_height="fill_parent"
-   	android:orientation="vertical" >
+   	android:orientation="vertical"
+	android:background="@drawable/background">
  
    	<ScrollView 
 	   	android:layout_width="fill_parent"
-	   	android:layout_height="wrap_content" 
+	   	android:layout_height="wrap_content"
+	    android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
 	    android:scrollbarSize="5dip"
 	   	android:scrollbars="vertical"
    		android:paddingLeft="10dp">
